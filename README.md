@@ -128,63 +128,73 @@ pip install Flask scikit-learn folium numpy
 }
 ```
 
-Usage
-Solution 1: Assign Locations to a User-Defined Number of Days
 
-In this solution, the user specifies the number of days they want to allocate for the trip. The algorithm then attempts to assign locations to these days such that no day’s total time exceeds the maximum hours per day.
+## Usage
 
-Steps:
+### Solution 1: Assign Locations to a User-Defined Number of Days
 
-Input Data: Provide your dataset with location information, including the time required for each location.
+In this solution, the user specifies the **number of days** they want to allocate for the trip. The algorithm then attempts to assign locations to these days such that no day’s total time exceeds the **maximum hours per day**.
 
-Run the Function:
+#### Steps:
 
-You can execute the function for this solution by running the following code:
+1. **Input Data**: Provide your dataset with location information, including the time required for each location.
 
-from scheduling import assign_to_fixed_days  # Ensure this is the correct path to your function
+2. **Run the Function**:
 
-locations = [
-    {"location": "Marina Bay Sands", "hours": 4},
-    {"location": "Gardens by the Bay", "hours": 2},
-    {"location": "Sentosa", "hours": 5},
-    {"location": "Chinatown", "hours": 3}
-]
+   You can execute the function for this solution by running the following code:
 
-max_hours_per_day = 8
-days_requested = 2  # User defines how many days they want to allocate
-assignments = assign_to_fixed_days(locations, max_hours_per_day, days_requested)
-print(assignments)
+   ```python
+   from scheduling import assign_to_fixed_days  # Ensure this is the correct path to your function
+
+   locations = [
+       {"location": "Marina Bay Sands", "hours": 4},
+       {"location": "Gardens by the Bay", "hours": 2},
+       {"location": "Sentosa", "hours": 5},
+       {"location": "Chinatown", "hours": 3}
+   ]
+
+   max_hours_per_day = 8
+   days_requested = 2  # User defines how many days they want to allocate
+   assignments = assign_to_fixed_days(locations, max_hours_per_day, days_requested)
+   print(assignments)
+   ```
+
+3. **Output**: The result will show the locations assigned to each day, ensuring the total time per day does not exceed the specified **maximum hours per day**.
+
+---
+
+### Solution 2: Distribute Locations Across the Optimal Minimum Number of Days
+
+In this solution, the algorithm calculates the **minimum number of days** required to visit all locations. The total time for each day will not exceed the **maximum hours per day** limit, and locations are distributed across the fewest days possible.
+
+#### Steps:
+
+1. **Input Data**: Provide your dataset with location information, including the time required for each location.
+
+2. **Run the Function**:
+
+   You can execute the function for this solution by running:
+
+   ```python
+   from scheduling import distribute_to_optimal_days  # Ensure this is the correct path to your function
+
+   locations = [
+       {"location": "Marina Bay Sands", "hours": 4},
+       {"location": "Gardens by the Bay", "hours": 2},
+       {"location": "Sentosa", "hours": 5},
+       {"location": "Chinatown", "hours": 3}
+   ]
+
+   max_hours_per_day = 8
+   optimal_day_assignments = distribute_to_optimal_days(locations, max_hours_per_day)
+   print(optimal_day_assignments)
+   ```
+
+3. **Output**: The result will show how the locations are distributed across the **minimum number of days** required, with no day exceeding the specified **maximum hours per day**.
+
+---
 
 
-Output: The result will show the locations assigned to each day, ensuring the total time per day does not exceed the specified maximum hours per day.
-
-Solution 2: Distribute Locations Across the Optimal Minimum Number of Days
-
-In this solution, the algorithm calculates the minimum number of days required to visit all locations. The total time for each day will not exceed the maximum hours per day limit, and locations are distributed across the fewest days possible.
-
-Steps:
-
-Input Data: Provide your dataset with location information, including the time required for each location.
-
-Run the Function:
-
-You can execute the function for this solution by running:
-
-from scheduling import distribute_to_optimal_days  # Ensure this is the correct path to your function
-
-locations = [
-    {"location": "Marina Bay Sands", "hours": 4},
-    {"location": "Gardens by the Bay", "hours": 2},
-    {"location": "Sentosa", "hours": 5},
-    {"location": "Chinatown", "hours": 3}
-]
-
-max_hours_per_day = 8
-optimal_day_assignments = distribute_to_optimal_days(locations, max_hours_per_day)
-print(optimal_day_assignments)
-
-
-Output: The result will show how the locations are distributed across the minimum number of days required, with no day exceeding the specified maximum hours per day.
 
 ### Visualization
 
