@@ -8,9 +8,9 @@ This project implements an API for clustering location data using the **DBSCAN**
 * **Location Clustering**: Using DBSCAN, this API clusters a list of location data based on geographical coordinates.
 * **Clustering Solutions**:
 
-  1. **Solution 1**: Assigns locations to a single day based on maximum hours.
-  2. **Solution 2**: Distributes locations across multiple days based on a set maximum hours per day.
-* **Map Visualizations**: Generates HTML files with visual maps for each day in Solution 2, showing the clustered locations.
+  1. **Solution 1**: Assign Locations to a User-Defined Number of Days
+  2. **Solution 2**: Distribute Locations Across the Optimal Minimum Number of Days
+* **Map Visualizations**: Generates HTML files with visual maps for each day, showing the clustered locations.
 * **Dynamic API Response**: Returns clustering results in a JSON format that includes location details (latitude, longitude, priority, etc.).
 
 ## Requirements
@@ -128,9 +128,67 @@ pip install Flask scikit-learn folium numpy
 }
 ```
 
+Usage
+Solution 1: Assign Locations to a User-Defined Number of Days
+
+In this solution, the user specifies the number of days they want to allocate for the trip. The algorithm then attempts to assign locations to these days such that no day’s total time exceeds the maximum hours per day.
+
+Steps:
+
+Input Data: Provide your dataset with location information, including the time required for each location.
+
+Run the Function:
+
+You can execute the function for this solution by running the following code:
+
+from scheduling import assign_to_fixed_days  # Ensure this is the correct path to your function
+
+locations = [
+    {"location": "Marina Bay Sands", "hours": 4},
+    {"location": "Gardens by the Bay", "hours": 2},
+    {"location": "Sentosa", "hours": 5},
+    {"location": "Chinatown", "hours": 3}
+]
+
+max_hours_per_day = 8
+days_requested = 2  # User defines how many days they want to allocate
+assignments = assign_to_fixed_days(locations, max_hours_per_day, days_requested)
+print(assignments)
+
+
+Output: The result will show the locations assigned to each day, ensuring the total time per day does not exceed the specified maximum hours per day.
+
+Solution 2: Distribute Locations Across the Optimal Minimum Number of Days
+
+In this solution, the algorithm calculates the minimum number of days required to visit all locations. The total time for each day will not exceed the maximum hours per day limit, and locations are distributed across the fewest days possible.
+
+Steps:
+
+Input Data: Provide your dataset with location information, including the time required for each location.
+
+Run the Function:
+
+You can execute the function for this solution by running:
+
+from scheduling import distribute_to_optimal_days  # Ensure this is the correct path to your function
+
+locations = [
+    {"location": "Marina Bay Sands", "hours": 4},
+    {"location": "Gardens by the Bay", "hours": 2},
+    {"location": "Sentosa", "hours": 5},
+    {"location": "Chinatown", "hours": 3}
+]
+
+max_hours_per_day = 8
+optimal_day_assignments = distribute_to_optimal_days(locations, max_hours_per_day)
+print(optimal_day_assignments)
+
+
+Output: The result will show how the locations are distributed across the minimum number of days required, with no day exceeding the specified maximum hours per day.
+
 ### Visualization
 
-The API generates visual maps for each day in the `solution2` response, where the clusters are plotted with markers indicating their geographic locations.
+The API generates visual maps for each day, where the clusters are plotted with markers indicating their geographic locations.
 
 ### Example Output Map:
 
