@@ -1,6 +1,3 @@
-Here's a simple README template you can use for your project based on the code you've shared:
-
----
 
 # Cluster API Project
 
