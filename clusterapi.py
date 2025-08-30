@@ -127,7 +127,7 @@ def get_clusters():
 
         html_file = f"day_{day_idx + 1}.html"
         m_day.save(html_file)
-        webbrowser.open(f'file:///C:/Users/soosh/OneDrive/Y3S1/IM3180/DIP%20Project%20code/{html_file}')
+        #webbrowser.open(f'file:///C:/Users/soosh/OneDrive/Y3S1/IM3180/DIP%20Project%20code/{html_file}')
 
     return jsonify(clusters_response)
 
