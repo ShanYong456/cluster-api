@@ -9,7 +9,7 @@ from google import genai
 app = Flask(__name__)
 
 # --- Initialize Gemini client ---
-API_KEY = "AIzaSyBugSwhaA8n5qWDGmyIHF8O0fy_7b8lPGo"
+API_KEY = ""
 client = genai.Client(api_key=API_KEY)
 
 def generate_itinerary(user_stay_days, max_hours_per_day):

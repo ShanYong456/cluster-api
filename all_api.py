@@ -11,7 +11,7 @@ from google import genai
 app = Flask(__name__)
 
 # --- Initialize Gemini client ---
-API_KEY = "AIzaSyBugSwhaA8n5qWDGmyIHF8O0fy_7b8lPGo"
+API_KEY = ""
 client = genai.Client(api_key=API_KEY)
 
 # --- Utility to convert numpy types to Python native ---
